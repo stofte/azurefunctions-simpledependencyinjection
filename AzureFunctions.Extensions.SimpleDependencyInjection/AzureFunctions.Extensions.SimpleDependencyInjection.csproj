@@ -4,9 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>1.0.2</Version>
-    <Description>Dependency injection using Microsoft.Extensions.DependencyInjection for v2 Azure Functions.</Description>
+    <Description>Dependency injection using Microsoft.Extensions.DependencyInjection for v2 Azure Functions. Seehttps://github.com/stofte/azurefunctions-simpledependencyinjection for more.</Description>
     <Authors>Svend Tofte</Authors>
     <PackageTags>azure azure-functions dependency-injection</PackageTags>
+    <PackageLicenseUrl>https://github.com/stofte/azurefunctions-simpledependencyinjection/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/stofte/azurefunctions-simpledependencyinjection</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/stofte/azurefunctions-simpledependencyinjection</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
