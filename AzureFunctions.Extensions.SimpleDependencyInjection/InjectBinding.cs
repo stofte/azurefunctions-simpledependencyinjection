@@ -2,8 +2,6 @@
 using Microsoft.Azure.WebJobs.Host.Protocols;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AzureFunctions.Extensions.SimpleDependencyInjection

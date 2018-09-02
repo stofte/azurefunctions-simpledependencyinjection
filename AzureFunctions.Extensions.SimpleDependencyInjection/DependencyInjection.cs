@@ -1,19 +1,25 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 
 namespace AzureFunctions.Extensions.SimpleDependencyInjection
 {
     public static class DependencyInjection
     {
+        public static Lazy<IServiceProvider> LazyProvider = new Lazy<IServiceProvider>(() =>
+        {
+            if (!IsInitialized)
+            {
+                ConfigureContainer();
+            }
+            return serviceProvider;
+        }, false);
+
         private static IServiceProvider serviceProvider;
 
         public static bool IsInitialized { get; private set; } = false;
 
-         static void ConfigureContainer()
+        static void ConfigureContainer()
         {
             if (!IsInitialized)
             {
@@ -32,7 +38,7 @@ namespace AzureFunctions.Extensions.SimpleDependencyInjection
                 IContainerConfigurator configurator = null;
                 try
                 {
-                    configurator = (IContainerConfigurator) Activator.CreateInstance(configTypes.Single());
+                    configurator = (IContainerConfigurator)Activator.CreateInstance(configTypes.Single());
                 }
                 catch (Exception exn)
                 {
@@ -42,18 +48,6 @@ namespace AzureFunctions.Extensions.SimpleDependencyInjection
                 configurator.Configure(services);
                 serviceProvider = services.BuildServiceProvider();
                 IsInitialized = true;
-            }
-        }
-
-        public static IServiceProvider Provider
-        {
-            get
-            {
-                if (!IsInitialized)
-                {
-                    ConfigureContainer();
-                }
-                return serviceProvider;
             }
         }
     }
