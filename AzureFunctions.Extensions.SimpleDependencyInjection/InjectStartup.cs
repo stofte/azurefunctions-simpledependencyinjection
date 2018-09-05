@@ -3,6 +3,7 @@ using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Azure.WebJobs.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,8 @@ namespace AzureFunctions.Extensions.SimpleDependencyInjection
     {
         public void Configure(IWebJobsBuilder builder)
         {
-            builder.AddExtension(new InjectConfiguration());
+            builder.Services.AddSingleton<IFunctionFilter, ScopeCleanupFilter>();
+            builder.AddExtension<InjectConfiguration>();
         }
     }
 }

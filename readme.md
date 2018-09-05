@@ -24,7 +24,6 @@ Configuration example:
 
 Usage example:
 
-	[InjectFilter]
     public static class MyFunction
     {
         [FunctionName("MyFunction")]
